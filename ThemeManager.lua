@@ -1,3 +1,5 @@
+local httpService = game:GetService('HttpService') local ThemeManager = {} do ThemeManager.Folder = 'LinoriaLibSettings' -- if not isfolder(ThemeManager.Folder) then makefolder(ThemeManager.Folder) end
+
 ThemeManager.Library = nil
 ThemeManager.BuiltInThemes = {
 	['Default'] 		= { 1, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"000f1e","AccentColor":"7b00ff","BackgroundColor":"050514","OutlineColor":"000005"}') },
