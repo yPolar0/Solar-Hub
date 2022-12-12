@@ -1,0 +1,27 @@
+{
+    "version": "V2",
+    "games": {
+        "badbusiness": [3233893879],
+        "bloxburg": [185655149],
+        "projectlazarus": [443406476]
+    },
+    "systems": {
+        "configs": "1.0.0.1",
+        "discord": "1.0.0.0",
+        "drawing": "1.0.0.0",
+        "themes": "1.0.0.0",
+        "utils": "1.0.1.0",
+        "signal": "1.0.0.0",
+        "maid": "1.0.0.0"
+    },
+    "directories": [
+        "Solar Hub",
+        "Solar Hub/Configs",
+        "Solar Hub/Themes",
+        "Solar Hub/Data",
+        "Solar Hub/Data/Bloxburg Saves",
+        "Solar Hub/Data/Images",
+        "Solar Hub/Data/Systems"
+    ],
+    "images": []
+}
