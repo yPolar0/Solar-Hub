@@ -1,0 +1,6 @@
+repeat wait() until game:IsLoaded()
+if syn then req = syn.request else req = request end
+pcall(function()
+    local Solar, Main = pcall(req, {Url ="https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/".. game.PlaceId ..".lua"});
+  game:Load(assert(loadstring(Main.Body)()))
+end)
