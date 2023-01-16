@@ -1,4 +1,3 @@
-
 if gethui then
     syn.protect_gui = gethui
 end
