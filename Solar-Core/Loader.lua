@@ -2,6 +2,8 @@ if gethui then
     syn.protect_gui = gethui
 end
 
+ ------// Games Suported [In Dev] \\------
+
 local Network = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/Solar-Core/CustomFuncs/Network.lua"))()
 local Client = {
     Github = "https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/Solar-Core/Supported%20Games/",
