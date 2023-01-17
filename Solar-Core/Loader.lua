@@ -1,6 +1,6 @@
-if gethui then
-    syn.protect_gui = gethui
-end
+--if gethui then
+  -- syn.protect_gui = gethui
+--end
 
  ------// Games Suported [In Dev] \\------
 
