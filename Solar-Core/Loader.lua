@@ -1,51 +1,13 @@
-------// Games Suported [In Dev] \\------
+------// Games Suported [In Dev] \\------ 
 
-local Network = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/Solar-Core/CustomFuncs/Network.lua"))()
-local Client = {
-    Github = "https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/Solar-Core/Supported%20Games/",
-    Games = loadstring(game:HttpGet(("https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/Solar-Core/StoredGames.lua")))(),
-    SupportedExploits = {
-        "Synapse X";
-        "Script-Ware";
-        "Krnl";
-        "Trigon";
-    }
-}
-
-local MarketplaceService = game:GetService("MarketplaceService")
-local ProductName = MarketplaceService:GetProductInfo(game.PlaceId).Name
-
-function LoadScript()
-    local GameName = nil;
-    for PlaceId, GamesName in next, Client.Games do
-        if tostring(game.PlaceId) == PlaceId then
-            GameName = GamesName
-            break;
-        end
-    end
-    if GameName then
-        local Success, Error = pcall(function()
-            loadstring(game:HttpGet(string.format("%s%s%s", Client.Github, GameName, ".lua")))()
-        end)
-        if not Success then
-            error(string.format('Failed to load script for game: "%s", Error: %s', string.gsub(GameName, "%%20", " "), Error))
-        end
-    else
-        Network:Notify("Unsupported Game", string.format("%s is not Supported", ProductName), 5)
-        task.wait(1.5)
-        Network:NotifyPrompt("Universal", "Would you like to load the universal script?", 30, function(Value)
-            if Value then
-                loadstring(game:HttpGet(string.format("%s%s", Client.Github, "Universal.lua")))()
-            end
-        end)
-    end
+repeat wait() until game:IsLoaded()
+local PlaceId = game.PlaceId
+if PlaceId == 71315343 or PlaceId == 1357512648 or PlaceId == 1362482151 or PlaceId == 3371469539 or PlaceId == 3336119605 then
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/Solar-Core/Supported%20Games/Dragon%20Ball%20Rage.lua")()
+elseif PlaceId == 6461766546 then
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/Solar-Core/Supported%20Games/A%20Hero%20Destiny.lua")()
+elseif PlaceId == 1537690962 then
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/Solar-Core/Supported%20Games/Bee%20Swarm%20Simulator.lua")()
+else
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/yPolar7/Solar-Hub/main/Solar-Core/Supported%20Games/Universal.lua")()
 end
-
-task.spawn(function()
-    for _, Exploit in next, Client.SupportedExploits do
-        if identifyexecutor() == Exploit then
-            LoadScript()
-            break;
-        end
-    end
-end)
