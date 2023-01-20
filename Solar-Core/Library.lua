@@ -1132,12 +1132,12 @@ function Library:CreateWindow(HubName, GameName)
 	local ImprovePerformance = GameName
 	local IntroText = ''..tostring(LibraryName)..' Created By yPolar#7294'
 	local IntroIcon = 'rbxassetid://11912754017'
-	wait()
+	task.wait()
 	local GameName = Services.MarketplaceService:GetProductInfo(game.PlaceId).Name
 	local ConfigFolder = (tostring(LibraryName)..'CurrentTheme')
 	local Theme = 'Default'
 	local HasCustom = false
-	local HubName = HubName
+	local HubName = HubName or 'UI Name'
 	if not Theme then
 		Theme = Themes.Default
 	elseif type(Theme) == 'table' then
