@@ -6,12 +6,7 @@ local Services=setmetatable({},{__index=function(b,c)return game:GetService(c)en
 local CoreGui = nil;
 local Executor = nil;
 if identifyexecutor and type(identifyexecutor) == "function" then
-	Executor = identifyexecutor()
-	if Executor ~= "ScriptWare" then
-		CoreGui = Services.CoreGui
-	else
 		CoreGui = gethui();
-	end
 end
 getgenv().kms = false;
 local DestroyedUiLibraryAndStoppedLoops = {};
@@ -1273,7 +1268,7 @@ function Library:CreateWindow(HubName, GameName)
 	wait(0.5)
 	_X_Image['IntroText']:Destroy()
 	Main['IntroImage']:Destroy()
-	Library:CreateNotification('[!] '..HubName..' Loaded!', 'Ui Successfully Loaded, Time Taken: '..math.floor(tick()-StartTick)..' Seconds!', 5)
+	Library:CreateNotification('[!] '..HubName..' Loaded!', 'Ui Successfully Loaded, time taken: '..math.floor(tick()-StartTick)..'s.', 5)
 	Utility:Create('Frame', {
 		Name = 'PromptHolder',
 		Parent = Main,
