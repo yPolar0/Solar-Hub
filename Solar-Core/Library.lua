@@ -1,7 +1,6 @@
 -- // Welcome To;
 
--- // Jon's Ui Library !
-local LibraryName = 'Solar-Hub';
+local LibraryName = 'Solar Hub';
 
 local StartTick = tick();
 -- // Services
@@ -1270,7 +1269,7 @@ function Library:CreateWindow(HubName, GameName)
 	wait(0.25)
 	_X_Image['IntroText'].Text = "Loading ..."
   	wait(0.30)
-  	Utility:Tween(Main['IntroImage'], {ImageColor3 = Color3.fromRGB(212,0,20)}, 0.25)
+  --	Utility:Tween(Main['IntroImage'], {ImageColor3 = Color3.fromRGB(136,212,83)}, 0.25)
 	wait(.15)
 	repeat _X_Text = _X_Image:FindFirstChild("IntroText")wait()until Main ~= nil and _X_Text ~= nil;
 	Utility:Tween(_X_Image['IntroText'], {TextTransparency = 1}, 0.25)
@@ -1279,7 +1278,7 @@ function Library:CreateWindow(HubName, GameName)
 	wait(0.5)
 	_X_Image['IntroText']:Destroy()
 	Main['IntroImage']:Destroy()
-	Library:CreateNotification('[!] '..HubName..' Loaded!', 'Ui Successfully Loaded, Time Taken: '..math.floor(tick()-StartTick)..' Seconds!', 5)
+	Library:CreateNotification('[!] '..HubName..' Loaded!', 'Ui Successfully Loaded, time taken: '..math.floor(tick()-StartTick)..'s.', 5)
 	Utility:Create('Frame', {
 		Name = 'PromptHolder',
 		Parent = Main,
