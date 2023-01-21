@@ -1,7 +1,7 @@
 -- // Welcome To;
 
 -- // Jon's Ui Library !
-local LibraryName = 'Jon\'s-Ui-Library';
+local LibraryName = 'Solar-Hub';
 
 local StartTick = tick();
 -- // Services
@@ -1135,7 +1135,7 @@ end
 
 function Library:CreateWindow(HubName, GameName)
 	local ImprovePerformance = GameName
-	local IntroText = ''..tostring(LibraryName)..' Created By 😴Jonathan💤#9341'
+	local IntroText = ''..tostring(LibraryName)..' Created By yPolar'
 	local IntroIcon = 'rbxassetid://11912754017'
 	wait()
 	local GameName = Services.MarketplaceService:GetProductInfo(game.PlaceId).Name
