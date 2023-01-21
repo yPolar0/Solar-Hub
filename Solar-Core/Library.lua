@@ -1,4 +1,4 @@
-local LibraryName = 'Solar Hub';
+local LibraryName = 'Solar-Hub';
 
 local StartTick = tick();
 
