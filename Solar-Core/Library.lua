@@ -1,14 +1,22 @@
-local LibraryName = 'Solar-Hub';
+-- // Welcome To;
+
+-- // Jon's Ui Library !
+local LibraryName = 'Jon\'s-Ui-Library';
 
 local StartTick = tick();
-
+-- // Services
 local Services=setmetatable({},{__index=function(b,c)return game:GetService(c)end})
 local CoreGui = nil;
 local Executor = nil;
 if identifyexecutor and type(identifyexecutor) == "function" then
+	Executor = identifyexecutor()
+	if Executor ~= "ScriptWare" then
+		CoreGui = Services.CoreGui
+	else
 		CoreGui = gethui();
+	end
 end
-getgenv().kms = false;
+getgenv().kms = false; -- // This Means that the user has ran the Library Before. Therefore Finding And Deleting The Old One;
 local DestroyedUiLibraryAndStoppedLoops = {};
 local UIName = LibraryName
 local Amount = 0;
@@ -31,7 +39,9 @@ local UpdateValue=function()end;
 local CacheUpdateValue=function()end;
 local FastWait=function()end;
 local task={};
-
+--[[
+	Update and bypassing Functions;
+]]
 UpdateValue = function()
 	FastWaitValue.Value = not FastWaitValue.Value
 end
@@ -1125,14 +1135,15 @@ end
 
 function Library:CreateWindow(HubName, GameName)
 	local ImprovePerformance = GameName
-	local IntroText = ''..tostring(LibraryName)..' Created By yPolar#7294'
+	local IntroText = ''..tostring(LibraryName)..' Created By 😴Jonathan💤#9341'
 	local IntroIcon = 'rbxassetid://11912754017'
-	task.wait()
+	wait()
 	local GameName = Services.MarketplaceService:GetProductInfo(game.PlaceId).Name
 	local ConfigFolder = (tostring(LibraryName)..'CurrentTheme')
 	local Theme = 'Default'
 	local HasCustom = false
 	local HubName = HubName or 'UI Name'
+	local Theme = Theme
 	if not Theme then
 		Theme = Themes.Default
 	elseif type(Theme) == 'table' then
@@ -1268,7 +1279,7 @@ function Library:CreateWindow(HubName, GameName)
 	wait(0.5)
 	_X_Image['IntroText']:Destroy()
 	Main['IntroImage']:Destroy()
-	Library:CreateNotification('[!] '..HubName..' Loaded!', 'Ui Successfully Loaded, time taken: '..math.floor(tick()-StartTick)..'s.', 5)
+	Library:CreateNotification('[!] '..HubName..' Loaded!', 'Ui Successfully Loaded, Time Taken: '..math.floor(tick()-StartTick)..' Seconds!', 5)
 	Utility:Create('Frame', {
 		Name = 'PromptHolder',
 		Parent = Main,
