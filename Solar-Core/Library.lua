@@ -1,9 +1,7 @@
--- // Welcome To;
-
 local LibraryName = 'Solar Hub';
 
 local StartTick = tick();
--- // Services
+
 local Services=setmetatable({},{__index=function(b,c)return game:GetService(c)end})
 local CoreGui = nil;
 local Executor = nil;
@@ -15,7 +13,7 @@ if identifyexecutor and type(identifyexecutor) == "function" then
 		CoreGui = gethui();
 	end
 end
-getgenv().kms = false; -- // This Means that the user has ran the Library Before. Therefore Finding And Deleting The Old One;
+getgenv().kms = false;
 local DestroyedUiLibraryAndStoppedLoops = {};
 local UIName = LibraryName
 local Amount = 0;
