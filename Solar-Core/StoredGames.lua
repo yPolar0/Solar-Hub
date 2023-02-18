@@ -6,4 +6,7 @@ return {
     ["3336119605"] = "Dragon%20Ball%20Rage";
     ["6461766546"] = "A%20Hero%20Destiny";
     ["1537690962"] = "Bee%20Swarm%20Simulator";
+    ["2753915549"] = "Blox%20Fruits";
+    ["4442272183"] = "Blox%20Fruits";
+    ["7449423635"] = "Blox%20Fruits";
 }
