@@ -2430,7 +2430,7 @@ do
 
     local WatermarkOuter = Library:Create('Frame', {
         BorderColor3 = Color3.new(0.49019607843137253, 1, 0.9490196078431372);
-        Position = UDim2.new(1, 150, 10, -30);
+        Position = UDim2.new(1, 100, 10, -30);
         Size = UDim2.new(0, 213, 0, 20);
         ZIndex = 200;
         Visible = false;
