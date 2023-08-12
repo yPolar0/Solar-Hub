@@ -1,378 +1,257 @@
-function createBaseNotifications()
-    if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("NotificationHolder") then
-        return game:GetService("Players").LocalPlayer.PlayerGui.NotificationHolder
-    end
-    
-    local ScreenGui = Instance.new("ScreenGui")
-    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    
-    local ToggleNotif = Instance.new("Frame")
-    ToggleNotif.Name = "ToggleNotif"
-    ToggleNotif.ZIndex = 5
-    ToggleNotif.AnchorPoint = Vector2.new(1, 1)
-    ToggleNotif.Visible = false
-    ToggleNotif.Size = UDim2.new(0, 291, 0, 56)
-    ToggleNotif.Position = UDim2.new(1, 0, 1, 0)
-    ToggleNotif.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
-    ToggleNotif.Parent = ScreenGui
-    
-    local UiCorner = Instance.new("UICorner")
-    UiCorner.Name = "UiCorner"
-    UiCorner.Parent = ToggleNotif
-    
-    local Dropshadow = Instance.new("UIStroke")
-    Dropshadow.Name = "Dropshadow"
-    Dropshadow.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    Dropshadow.Transparency = 0.8
-    Dropshadow.Thickness = 2
-    Dropshadow.Color = Color3.fromRGB(20, 20, 20)
-    Dropshadow.Parent = ToggleNotif
-    
-    local SepVertical = Instance.new("Frame")
-    SepVertical.Name = "SepVertical"
-    SepVertical.Size = UDim2.new(0, 2, 0, 56)
-    SepVertical.BackgroundTransparency = 0.5
-    SepVertical.Position = UDim2.new(0.7423077, 0, 0, 0)
-    SepVertical.BorderSizePixel = 0
-    SepVertical.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
-    SepVertical.Parent = ToggleNotif
-    
-    local SepHorizontal = Instance.new("Frame")
-    SepHorizontal.Name = "SepHorizontal"
-    SepHorizontal.Size = UDim2.new(0, 72, 0, 2)
-    SepHorizontal.BackgroundTransparency = 0.5
-    SepHorizontal.Position = UDim2.new(0.75, 0, 0.4464286, 2)
-    SepHorizontal.BorderSizePixel = 0
-    SepHorizontal.BackgroundColor3 = Color3.fromRGB(68, 68, 68)
-    SepHorizontal.Parent = ToggleNotif
-    
-    local Title = Instance.new("TextLabel")
-    Title.Name = "Title"
-    Title.Size = UDim2.new(0, 216, 0, 19)
-    Title.BackgroundTransparency = 1
-    Title.BorderSizePixel = 0
-    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Title.FontSize = Enum.FontSize.Size14
-    Title.TextSize = 14
-    Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Title.Font = Enum.Font.SourceSans
-    Title.Parent = ToggleNotif
-    
-    local Paragraph = Instance.new("TextLabel")
-    Paragraph.Name = "Paragraph"
-    Paragraph.Size = UDim2.new(0, 218, 0, 37)
-    Paragraph.BackgroundTransparency = 1
-    Paragraph.Position = UDim2.new(0, 0, 0.3392857, 0)
-    Paragraph.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Paragraph.FontSize = Enum.FontSize.Size14
-    Paragraph.TextSize = 14
-    Paragraph.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Paragraph.Text = ""
-    Paragraph.TextYAlignment = Enum.TextYAlignment.Top
-    Paragraph.TextWrapped = true
-    Paragraph.Font = Enum.Font.SourceSans
-    Paragraph.TextWrap = true
-    Paragraph.TextXAlignment = Enum.TextXAlignment.Left
-    Paragraph.Parent = ToggleNotif
-    
-    local UIPadding = Instance.new("UIPadding")
-    UIPadding.PaddingLeft = UDim.new(0, 10)
-    UIPadding.PaddingRight = UDim.new(0, 5)
-    UIPadding.Parent = Paragraph
-    
-    local True = Instance.new("TextButton")
-    True.Name = "True"
-    True.Size = UDim2.new(0, 72, 0, 27)
-    True.BackgroundTransparency = 1
-    True.Position = UDim2.new(0.75, 0, 0, 0)
-    True.BorderSizePixel = 0
-    True.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    True.FontSize = Enum.FontSize.Size14
-    True.TextSize = 14
-    True.TextColor3 = Color3.fromRGB(255, 255, 255)
-    True.Text = "Yes"
-    True.Font = Enum.Font.SourceSans
-    True.Parent = ToggleNotif
-    
-    local False = Instance.new("TextButton")
-    False.Name = "False"
-    False.Size = UDim2.new(0, 72, 0, 27)
-    False.BackgroundTransparency = 1
-    False.Position = UDim2.new(0.75, 0, 0.5178571, 0)
-    False.BorderSizePixel = 0
-    False.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    False.FontSize = Enum.FontSize.Size14
-    False.TextSize = 14
-    False.TextColor3 = Color3.fromRGB(255, 255, 255)
-    False.Text = "No"
-    False.Font = Enum.Font.SourceSans
-    False.Parent = ToggleNotif
-    
-    local LocalScript = Instance.new("LocalScript")
-    LocalScript.Parent = ScreenGui
-    
-    local DefaultNotif = Instance.new("Frame")
-    DefaultNotif.Name = "DefaultNotif"
-    DefaultNotif.ZIndex = 5
-    DefaultNotif.AnchorPoint = Vector2.new(1, 1)
-    DefaultNotif.Visible = false
-    DefaultNotif.Size = UDim2.new(0, 291, 0, 56)
-    DefaultNotif.Position = UDim2.new(1, 0, 0.9999999, 0)
-    DefaultNotif.BackgroundColor3 = Color3.fromRGB(48, 48, 48)
-    DefaultNotif.Parent = ScreenGui
-    
-    local UiCorner1 = Instance.new("UICorner")
-    UiCorner1.Name = "UiCorner"
-    UiCorner1.Parent = DefaultNotif
-    
-    local Dropshadow1 = Instance.new("UIStroke")
-    Dropshadow1.Name = "Dropshadow"
-    Dropshadow1.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    Dropshadow1.Transparency = 0.8
-    Dropshadow1.Thickness = 2
-    Dropshadow1.Color = Color3.fromRGB(20, 20, 20)
-    Dropshadow1.Parent = DefaultNotif
-    
-    local Title1 = Instance.new("TextLabel")
-    Title1.Name = "Title"
-    Title1.Size = UDim2.new(0, 291, 0, 19)
-    Title1.BackgroundTransparency = 1
-    Title1.BorderSizePixel = 0
-    Title1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Title1.FontSize = Enum.FontSize.Size14
-    Title1.TextSize = 14
-    Title1.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Title1.Font = Enum.Font.SourceSans
-    Title1.Parent = DefaultNotif
-    
-    local Paragraph1 = Instance.new("TextLabel")
-    Paragraph1.Name = "Paragraph"
-    Paragraph1.Size = UDim2.new(0, 291, 0, 37)
-    Paragraph1.BackgroundTransparency = 1
-    Paragraph1.Position = UDim2.new(0, 0, 0.3392857, 0)
-    Paragraph1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Paragraph1.FontSize = Enum.FontSize.Size14
-    Paragraph1.TextSize = 14
-    Paragraph1.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Paragraph1.Text = ""
-    Paragraph1.TextYAlignment = Enum.TextYAlignment.Top
-    Paragraph1.TextWrapped = true
-    Paragraph1.Font = Enum.Font.SourceSans
-    Paragraph1.TextWrap = true
-    Paragraph1.TextXAlignment = Enum.TextXAlignment.Left
-    Paragraph1.Parent = DefaultNotif
-    
-    local UIPadding1 = Instance.new("UIPadding")
-    UIPadding1.PaddingLeft = UDim.new(0, 10)
-    UIPadding1.PaddingRight = UDim.new(0, 5)
-    UIPadding1.Parent = Paragraph1
-    
-    if syn then
-        syn.protect_gui(ScreenGui)
-    end
-    
-    ScreenGui.Parent = game:GetService("Players").LocalPlayer.PlayerGui
-    return ScreenGui
+local isExistance = false
+
+local Notifyt = Instance.new("ScreenGui")
+local NotificationParent = Instance.new("ScrollingFrame")
+local UIListLayout = Instance.new("UIListLayout")
+local UIPadding = Instance.new("UIPadding")
+local Notification = Instance.new("Frame")
+local Container = Instance.new("ImageButton")
+local Top = Instance.new("ImageLabel")
+local Exit = Instance.new("Frame")
+local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+local Icon = Instance.new("ImageLabel")
+local Button = Instance.new("TextButton")
+local Title = Instance.new("TextLabel")
+local Accent = Instance.new("Frame")
+local Body = Instance.new("Frame")
+local Content = Instance.new("TextLabel")
+local UIPadding_2 = Instance.new("UIPadding")
+local UISizeConstraint = Instance.new("UISizeConstraint")
+
+if game.CoreGui:FindFirstChild("Notifyt") then
+	isExistance = true
+	Notifyt = game.CoreGui.Notifyt
+	NotificationParent = Notifyt.NotificationParent
+	Notification = Notifyt.Notification
 end
 
-local notificationLibrary = {}
+Notifyt.Name = "Notifyt"
+Notifyt.Parent = game.CoreGui
+Notifyt.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Notifyt.ResetOnSpawn = false
 
-notificationHolder = createBaseNotifications()
+NotificationParent.Name = "NotificationParent"
+NotificationParent.Parent = Notifyt
+NotificationParent.AnchorPoint = Vector2.new(1, 0)
+NotificationParent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NotificationParent.BackgroundTransparency = 1.000
+NotificationParent.BorderSizePixel = 0
+NotificationParent.ClipsDescendants = false
+NotificationParent.Position = UDim2.new(1, 0, 0, -25)
+NotificationParent.Selectable = false
+NotificationParent.Size = UDim2.new(0, 275, 1, 0)
+NotificationParent.CanvasSize = UDim2.new(0, 0, 0, 0)
+NotificationParent.ScrollBarThickness = 0
+NotificationParent.ScrollingEnabled = false
 
-notifAmount = 0
-removedPos = nil
+UIListLayout.Parent = NotificationParent
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+UIListLayout.Padding = UDim.new(0, 5)
 
-function notificationLibrary:CreatePromptNotif(args)
-	args = args or {}
-	
-	
-	args.TweenSpeed = args.TweenSpeed or 1
-	args.TweenInSpeed = args.TweenInSpeed or args.TweenSpeed
-	args.TweenOutSpeed = args.TweenOutSpeed or args.TweenSpeed
-	args.TweenVerticalSpeed = args.TweenVerticalSpeed or args.TweenSpeed
-	
-	args.Title = args.Title or "Title"
-	args.Text = args.Text or "Text"
-	
-	args.TrueText = args.TrueText or "Yes"
-	args.FalseText = args.FalseText or "No"
-	
-	args.Duration = args.Duration or 5
-	args.Callback = args.Callback or function() warn("No callback for notif") end
-	
-	---- arg defining ^
-	
+UIPadding.Parent = NotificationParent
+UIPadding.PaddingRight = UDim.new(0, 25)
 
-	
-	notifAmount = notifAmount + 1
-	
-	local track = notifAmount
-	local notifNum = notifAmount
-	
-	local doesExist = true
-	local notif = notificationHolder.ToggleNotif:Clone()
-	local removed = false
-	
-	notif.Parent = notificationHolder
-	notif.Visible = true
-	notif.Position = UDim2.new(1, 300, 1, -5)
-	
-	notif.Transparency = 0.05
-	
-	notif.True.Text = args.TrueText
-	notif.False.Text = args.FalseText
-	
-	task.spawn(function()
-		task.wait(args.Duration + args.TweenInSpeed)
-		doesExist = false
+Notification.Name = "Notification"
+Notification.Parent = Notifyt
+Notification.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Notification.BackgroundTransparency = 1.000
+Notification.BorderSizePixel = 0
+Notification.Position = UDim2.new(1, 0, 0, 0)
+Notification.Size = UDim2.new(0, 250, 0, 0)
+Notification.Visible = false
+
+Container.Name = "Container"
+Container.Parent = Notification
+Container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Container.BackgroundTransparency = 1.000
+Container.BorderSizePixel = 0
+Container.Position = UDim2.new(1.14999998, 0, 0, 0)
+Container.Size = UDim2.new(1, 0, 0, 0)
+Container.Image = "rbxassetid://6296184185"
+Container.ImageColor3 = Color3.fromRGB(0, 0, 0)
+Container.ImageTransparency = 0.500
+Container.ScaleType = Enum.ScaleType.Slice
+Container.SliceCenter = Rect.new(512, 512, 512, 512)
+Container.SliceScale = 0.012
+
+Top.Name = "Top"
+Top.Parent = Container
+Top.BackgroundColor3 = Color3.fromRGB(248, 248, 248)
+Top.BackgroundTransparency = 1.000
+Top.BorderSizePixel = 0
+Top.Size = UDim2.new(1, 0, 0, 32)
+Top.ZIndex = 3
+Top.Image = "rbxassetid://6276641225"
+Top.ImageColor3 = Color3.fromRGB(0, 0, 0)
+Top.ImageTransparency = 0.600
+Top.ScaleType = Enum.ScaleType.Slice
+Top.SliceCenter = Rect.new(256, 256, 256, 256)
+Top.SliceScale = 0.022
+
+Exit.Name = "Exit"
+Exit.Parent = Top
+Exit.AnchorPoint = Vector2.new(1, 0)
+Exit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Exit.BackgroundTransparency = 1.000
+Exit.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Exit.BorderSizePixel = 0
+Exit.ClipsDescendants = true
+Exit.LayoutOrder = 3
+Exit.Position = UDim2.new(1, 0, 0, 0)
+Exit.Size = UDim2.new(1, 0, 1, 0)
+
+UIAspectRatioConstraint.Parent = Exit
+
+Icon.Name = "Icon"
+Icon.Parent = Exit
+Icon.AnchorPoint = Vector2.new(0.5, 0.5)
+Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Icon.BackgroundTransparency = 1.000
+Icon.BorderSizePixel = 0
+Icon.Position = UDim2.new(0.5, 0, 0.5, 0)
+Icon.Size = UDim2.new(0.5, 0, 0.5, 0)
+Icon.Image = "http://www.roblox.com/asset/?id=6415685859"
+Icon.ScaleType = Enum.ScaleType.Fit
+
+Button.Name = "Button"
+Button.Parent = Exit
+Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button.BackgroundTransparency = 1.000
+Button.BorderSizePixel = 0
+Button.Size = UDim2.new(1, 0, 1, 0)
+Button.ZIndex = 2
+Button.Font = Enum.Font.SourceSans
+Button.Text = ""
+Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+Button.TextSize = 14.000
+
+Title.Name = "Title"
+Title.Parent = Top
+Title.AnchorPoint = Vector2.new(1, 0)
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(1, 0, 0, 0)
+Title.Size = UDim2.new(1, -12, 1, 0)
+Title.Font = Enum.Font.GothamSemibold
+Title.Text = "Notification"
+Title.TextColor3 = Color3.fromRGB(240, 240, 240)
+Title.TextSize = 14.000
+Title.TextWrapped = true
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+Accent.Name = "Accent"
+Accent.Parent = Top
+Accent.AnchorPoint = Vector2.new(0, 1)
+Accent.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Accent.BackgroundTransparency = 0.700
+Accent.BorderSizePixel = 0
+Accent.Position = UDim2.new(0, 0, 1, 0)
+Accent.Size = UDim2.new(1, 0, 0, 1)
+
+Body.Name = "Body"
+Body.Parent = Container
+Body.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Body.BackgroundTransparency = 1.000
+Body.BorderSizePixel = 0
+Body.ClipsDescendants = true
+Body.Position = UDim2.new(0, 0, 0, 32)
+Body.Size = UDim2.new(1, 0, 0, 0)
+
+Content.Name = "Content"
+Content.Parent = Body
+Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Content.BackgroundTransparency = 1.000
+Content.BorderSizePixel = 0
+Content.Size = UDim2.new(1, 0, 1, 0)
+Content.Font = Enum.Font.Gotham
+Content.Text = "Message Here. This is an example message prompt."
+Content.TextColor3 = Color3.fromRGB(230, 230, 230)
+Content.TextSize = 14.000
+Content.TextWrapped = true
+Content.TextXAlignment = Enum.TextXAlignment.Left
+Content.TextYAlignment = Enum.TextYAlignment.Top
+
+UIPadding_2.Parent = Body
+UIPadding_2.PaddingBottom = UDim.new(0, 12)
+UIPadding_2.PaddingLeft = UDim.new(0, 12)
+UIPadding_2.PaddingRight = UDim.new(0, 12)
+UIPadding_2.PaddingTop = UDim.new(0, 12)
+
+UISizeConstraint.Parent = Container
+UISizeConstraint.MaxSize = Vector2.new(math.huge, 120)
+
+Notification.AutomaticSize = Enum.AutomaticSize.Y
+Container.AutomaticSize = Enum.AutomaticSize.Y
+Body.AutomaticSize = Enum.AutomaticSize.Y
+
+-- remove clones: 
+
+if isExistance then
+	UIListLayout:Destroy()
+	UIPadding:Destroy()
+	Container:Destroy()
+end
+
+-- script converted by saypotato
+
+local T = game:GetService('TweenService')
+local t = TweenInfo.new(0.5, Enum.EasingStyle.Quint)
+local tp = NotificationParent
+
+function prompt(title, text, closeTime, close)
+	local Prompt = Notification:Clone()
+	local Sound = Instance.new('Sound', Notification)
+
+	Prompt.Visible = true
+	Prompt.Container.Top.Title.Text = title
+	Prompt.Container.Body.Content.Text = text
+
+	Prompt.Parent = NotificationParent
+	Sound.SoundId = "rbxassetid://6518811702"
+	Sound:Play()
+
+	T:Create(Prompt.Container, t, {Position = UDim2.new(0, 0, 0, 0)}):Play()
+
+	-- auto size
+	Prompt.AutomaticSize = Enum.AutomaticSize.Y
+	Prompt.Container.AutomaticSize = Enum.AutomaticSize.Y
+	Prompt.Container.Body.AutomaticSize = Enum.AutomaticSize.Y
+	Prompt.Container.Body.Content.AutomaticSize = Enum.AutomaticSize.Y
+
+	Prompt.Container.Top.Exit.Button.MouseButton1Click:Connect(function()
+		T:Create(Prompt.Container, t, {Position = UDim2.new(1.15, 0, 0, 0)}):Play()
+		wait(0.48)
+		Prompt:Destroy()
 	end)
 	
-	notif.True.MouseButton1Click:Connect(function()
-		doesExist = false
-		removed = true
-		notifAmount = notifAmount - 1
-		removedPos = notif.Position.Y.Offset	
+	Prompt.Container.Top.Exit.Visible = close
 
-		pcall(args.Callback, true)
-	end)
-	
-	
-	notif.False.MouseButton1Click:Connect(function()
-		doesExist = false
-		removed = true
-		notifAmount = notifAmount - 1
-		removedPos = notif.Position.Y.Offset	
-		
-		pcall(args.Callback, false)
-	end)
-	
-	notif.Paragraph.Text = args.Text
-	notif.Title.Text = args.Title
+	wait(1)
 
-	notif:TweenPosition(UDim2.new(1, -5, 1, -5), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, args.TweenInSpeed)
+	Sound:Destroy()
 	
-	task.spawn(function()
-		local originalPos = notif.Position
-		while doesExist and task.wait() do	
-			local pos = notif.Position
-			
-			if notifAmount > track then
-				notif:TweenPosition(UDim2.new(1, -5, 1, originalPos.Y.Offset - (65 * (notifAmount - notifNum))), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, args.TweenVerticalSpeed, true)
-				track = track + 1
-			end
-			
-			if notifAmount < track then
-				if removedPos > pos.Y.Offset then
-					notif:TweenPosition(UDim2.new(1, -5, 1, originalPos.Y.Offset - (65 * (notifAmount - notifNum))), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, args.TweenVerticalSpeed, true)
-				else
-					notifNum = notifNum - 1
-				end
-				track = track - 1
+	spawn(function()
+		if typeof(closeTime) == "number" then
+			task.wait(closeTime)
+			local s = pcall(function()
+				T:Create(Prompt.Container, t, {Position = UDim2.new(1.15, 0, 0, 0)}):Play()
+				wait(0.48)
+				Prompt:Destroy()
+			end)
+			if not s then
+				print('Already closed.')
 			end
 		end
-		
-		local pos = notif.Position
-		
-		if removed == false then
-			notifAmount = notifAmount - 1
-			removedPos = notif.Position.Y.Offset
-		end
-		
-		notif:TweenPosition(UDim2.new(1, 300, 1, pos.Y.Offset), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, args.TweenOutSpeed, true)
-		task.wait(args.TweenOutSpeed)
-		notif:Destroy()
 	end)
 end
 
-function notificationLibrary:CreateDefaultNotif(args)
-	args = args or {}
-	
-	
-	args.TweenSpeed = args.TweenSpeed or 1
-	args.TweenInSpeed = args.TweenInSpeed or args.TweenSpeed
-	args.TweenOutSpeed = args.TweenOutSpeed or args.TweenSpeed
-	args.TweenVerticalSpeed = args.TweenVerticalSpeed or args.TweenSpeed
-	
-	args.Title = args.Title or "Title"
-	args.Text = args.Text or "Text"
-	
-	args.Duration = args.Duration or 5
-	
-	---- arg defining ^
-	
-    
-	
-	notifAmount = notifAmount + 1
-	
-	local track = notifAmount
-	local notifNum = notifAmount
-	
-	local removed = false
-	local doesExist = true
-	local notif = notificationHolder.DefaultNotif:Clone()
+local lib = {}
 
-	notif.Parent = notificationHolder
-	notif.Visible = true
-	notif.Position = UDim2.new(1, 300, 1, -5)
-	
-    notif.Transparency = 0.05
-	
-	notif.InputBegan:Connect(function(InputObject)
-        if InputObject.UserInputType == Enum.UserInputType.MouseButton1 then
-    		task.spawn(function()
-    			local tweenInfo = TweenInfo.new(0.5,Enum.EasingStyle.Linear,Enum.EasingDirection.Out,0, false,0)
-    			game:GetService("TweenService"):Create(notif, tweenInfo, {Transparency = 0.8}):Play()
-    		end)
-            doesExist = false
-		    removed = true
-		    notifAmount = notifAmount - 1
-		    removedPos = notif.Position.Y.Offset
-        end
-    end)
-	
-	task.spawn(function()
-		task.wait(args.Duration + args.TweenInSpeed)
-		doesExist = false
-	end)
-	
-	notif.Paragraph.Text = args.Text
-	notif.Title.Text = args.Title
-
-	notif:TweenPosition(UDim2.new(1, -5, 1, -5), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, args.TweenInSpeed)
-	
-	task.spawn(function()
-		local originalPos = notif.Position
-		while doesExist and task.wait() do	
-			local pos = notif.Position
-			
-			if notifAmount > track then
-				notif:TweenPosition(UDim2.new(1, -5, 1, originalPos.Y.Offset - (65 * (notifAmount - notifNum))), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, args.TweenVerticalSpeed, true)
-				track = track + 1
-			end
-			
-			if notifAmount < track then
-				if removedPos > pos.Y.Offset then
-					notif:TweenPosition(UDim2.new(1, -5, 1, originalPos.Y.Offset - (65 * (notifAmount - notifNum))), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, args.TweenVerticalSpeed, true)
-				else
-					notifNum = notifNum - 1
-				end
-				track = track - 1
-			end
-		end
-		
-		local pos = notif.Position
-		
-		if removed == false then 
-    	    notifAmount = notifAmount - 1
-    		removedPos = notif.Position.Y.Offset
-    	end
-		
-		
-		notif:TweenPosition(UDim2.new(1, 300, 1, pos.Y.Offset), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, args.TweenOutSpeed, true)
-		task.wait(args.TweenOutSpeed)
-		notif:Destroy()
-	end)
+function lib.prompt(title, description, closeTime)
+    prompt(title, description, closeTime, true)
 end
 
-
-return notificationLibrary
+return lib
