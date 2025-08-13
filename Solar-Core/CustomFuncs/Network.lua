@@ -1,4 +1,4 @@
-local NotificationLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/yPolar0/Solar-Hub/main/Solar-Core/NotificationLib.lua"))()
+local NotificationLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/yPolar0/Solar-Hub/refs/heads/main/Solar-Core/CustomFuncs/NotificationLib.lua"))()
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
